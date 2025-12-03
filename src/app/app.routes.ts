@@ -1,3 +1,13 @@
-import { Routes } from '@angular/router';
+// src/app/app.routes.ts
 
-export const routes: Routes = [];
+import { Routes } from '@angular/router';
+import { DailyServiceRecord } from './daily-service-record/daily-service-record';
+import { RabiesCase } from './rabies-case/rabies-case';
+import { WaterAnalysis } from './water-analysis/water-analysis';
+
+export const routes: Routes = [
+    {path: '', redirectTo: 'daily-service-record', pathMatch: 'full'}, 
+    {path: 'daily-service-record', component: DailyServiceRecord},
+    {path: 'rabies-case', component: RabiesCase},
+    {path: 'water-analysis', component: WaterAnalysis},
+];

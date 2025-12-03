@@ -1,0 +1,74 @@
+<div class="module-container">
+    
+    <div class="form-section">
+        <h1>{{ title() }}</h1>
+        <hr>
+  
+        <label>Date of Treatment</label>
+        <input type="date" [value]="date()"
+        (input)="date.set($any($event.target).value)" placeholder="Date the treatment was provided">
+
+        <label>Patient Name</label>
+        <input type="text" [value]="patientName()"
+        (input)="patientName.set($any($event.target).value)" placeholder="Full name of the patient">
+
+        <label>Age</label>
+        <input type="number" [value]="age()"
+        (input)="age.set($any($event.target).valueAsNumber)" placeholder="Patient age">
+
+        <label>Gender</label>
+        <input type="text" [value]="gender()"
+        (input)="gender.set($any($event.target).value)" placeholder="Male / Female / Other">
+
+        <label>Sickness Diagnosed</label>
+        <input type="text" [value]="sicknessDiagnosed()"
+        (input)="sicknessDiagnosed.set($any($event.target).value)" placeholder="Illness, medical condition, or injury">
+        
+        <label>Treatment Provided</label>
+        <textarea [value]="treatmentProvided()"
+        (input)="treatmentProvided.set($any($event.target).value)" placeholder="Medicine or treatment given"></textarea>
+        
+        <label>Attending Physician</label>
+        <input type="text" [value]="attendingPhysician()"
+        (input)="attendingPhysician.set($any($event.target).value)" placeholder="Name of the attending nurse/doctor">
+
+        <button (click)="addRecord()" class="primary-btn" style="width: 100%;">
+            {{ editingId() ? 'Update Record' : 'Save' }}
+        </button>
+    </div>
+
+    <div class="list-section">
+        <h2>Daily Service Records</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Patient Name</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Sickness Diagnosed</th>
+                    <th>Treatment Provided</th>
+                    <th>Attending Physician</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let record of records">
+                    <td>{{ record.date }}</td>
+                    <td>{{ record.patientName }}</td>
+                    <td>{{ record.age }}</td>
+                    <td>{{ record.gender }}</td>
+                    <td>{{ record.sicknessDiagnosed }}</td>
+                    <td>{{ record.treatmentProvided }}</td>
+                    <td>{{ record.attendingPhysician }}</td>
+                    <td>
+                        <button (click)="startEditRecord(record.id, record.date, record.patientName, record.age, record.gender, record.sicknessDiagnosed, record.treatmentProvided, record.attendingPhysician)" class="edit-btn">Edit</button>
+                        <button (click)="deleteRecord(record.id)" class="delete-btn">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <router-outlet/>
+</div>

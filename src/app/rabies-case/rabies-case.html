@@ -1,0 +1,75 @@
+<div class="module-container">
+    
+    <div class="form-section">
+        <h1>{{ title() }}</h1>
+        <hr>
+  
+        <label>Date of Incident</label>
+        <input type="date" [value]="date()"
+        (input)="date.set($any($event.target).value)" placeholder="Date of incident">
+
+        <label>Patient Name</label>
+        <input type="text" [value]="patientName()"
+        (input)="patientName.set($any($event.target).value)" placeholder="Name of the victim">
+
+        <label>Age</label>
+        <input type="number" [value]="age()"
+        (input)="age.set($any($event.target).valueAsNumber)" placeholder="Patient age">
+
+        <label>Gender</label>
+        <input type="text" [value]="gender()"
+        (input)="gender.set($any($event.target).value)" placeholder="Male / Female / Other">
+
+        <label>Animal Type</label>
+        <input type="text" [value]="animalType()"
+        (input)="animalType.set($any($event.target).value)" placeholder="Dog, Cat, Monkey, etc.">
+
+        <label>Rabies Status</label>
+        <input type="text" [value]="rabiesStatus()"
+        (input)="rabiesStatus.set($any($event.target).value)" placeholder="Positive / Negative / Unknown">
+        
+        <label>Treatment Given</label>
+        <input type="text" [value]="treatmentGiven()"
+        (input)="treatmentGiven.set($any($event.target).value)" placeholder="Anti-rabies vaccine, first aid, etc.">
+
+
+        <button (click)="addRecord()" class="primary-btn" style="width: 100%;">
+            {{ editingId() ? 'Update Record' : 'Save' }}
+        </button>
+    </div>
+
+    <div class="list-section">
+        <h2>Rabies Case Reports</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Patient Name</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Animal Type</th>
+                    <th>Rabies Status</th>
+                    <th>Treatment Given</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let record of records">
+                    <td>{{ record.date }}</td>
+                    <td>{{ record.patientName }}</td>
+                    <td>{{ record.age }}</td>
+                    <td>{{ record.gender }}</td>
+                    <td>{{ record.animalType }}</td>
+                    <td>{{ record.rabiesStatus }}</td>
+                    <td>{{ record.treatmentGiven }}</td>
+                    <td>
+                        <button (click)="startEditRecord(record.id, record.date, record.patientName, record.age, record.gender, record.animalType, record.rabiesStatus, record.treatmentGiven)" class="edit-btn">Edit</button>
+                        <button (click)="deleteRecord(record.id)" class="delete-btn">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <router-outlet/>
+</div>

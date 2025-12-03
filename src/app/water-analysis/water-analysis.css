@@ -1,0 +1,78 @@
+.module-container {
+    padding: 30px 20px;
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 30px;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.form-section {
+    flex: 1 1 400px; 
+    max-width: 500px;
+    padding: 25px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    height: fit-content; 
+}
+
+.form-section h1, .form-section hr {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.list-section {
+    flex: 999 1 600px; 
+    padding: 25px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    overflow-x: auto; 
+}
+
+
+.form-section label {
+    display: block;
+    width: 100%;
+    margin-bottom: 8px; 
+    text-align: left;
+    font-weight: bold; 
+    font-size: 16px;   
+}
+
+.form-section input, 
+.form-section textarea {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 20px; 
+    margin-top: 5px;
+    padding: 12px;     
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;   
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px; 
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+    font-size: 15px; 
+}
+
+th {
+    white-space: nowrap; 
+    background-color: #f4f4f4;
+}
